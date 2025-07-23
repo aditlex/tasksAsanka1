@@ -1,58 +1,39 @@
-"use client";
-
-import { useState, useEffect } from "react";
-
 export default function Home() {
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 10); // kasih sedikit jarak scroll biar nggak terlalu sensitif
-    };
-
-    // Jalankan sekali saat render
-    handleScroll();
-    window.addEventListener("scroll", handleScroll);
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
-    <div className="bg-white">
-      <nav
-        className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 h-20 transition-all duration-300 ${
-          scrolled ? "bg-white shadow-md" : "bg-transparent"
-        }`}
-      >
-        {/* Logo dan Menu */}
-        <div className="flex items-center space-x-12 -ml-4">
-          <img src="/logo.svg" alt="Logo" className="h-11 w-auto" />
-          <div className="hidden md:flex items-center space-x-10 text-gray-700 text-sm font-medium">
-            <a href="#" className="flex items-center hover:text-blue-500">
-              Tools
-              <img src="/chevron-down.svg" alt="▼" className="w-4 h-4 ml-1" />
-            </a>
-            <a href="#" className="flex items-center hover:text-blue-500">
-              For Developers (APIs)
-              <img src="/chevron-down.svg" alt="▼" className="w-4 h-4 ml-1" />
-            </a>
-            <a href="#" className="flex items-center hover:text-blue-500">
-              Pricing
-              <img src="/sale.png" alt="Sale" className="h-15 mt-5 w-auto ml-3" />
-            </a>
+    <div className="bg-white min-h-screen">
+      {/* Navbar Sticky */}
+      <nav className="sticky top-0 z-50 backdrop-blur bg-white/70 shadow-sm transition-all duration-300">
+        <div className="flex items-center justify-between px-8 h-20">
+          {/* Kiri */}
+          <div className="flex items-center space-x-12 -ml-4">
+            <img src="/logo.svg" alt="Logo" className="h-11 w-auto" />
+            <div className="hidden md:flex items-center space-x-10 text-gray-700 text-sm font-medium">
+              <a href="#" className="flex items-center hover:text-blue-500">
+                Tools
+                <img src="/chevron-down.svg" alt="▼" className="w-4 h-4 ml-1" />
+              </a>
+              <a href="#" className="flex items-center hover:text-blue-500">
+                For Developers (APIs)
+                <img src="/chevron-down.svg" alt="▼" className="w-4 h-4 ml-1" />
+              </a>
+              <a href="#" className="flex items-center hover:text-blue-500">
+                Pricing
+                <img src="/sale.png" alt="Sale" className="h-15 mt-5 w-auto ml-3" />
+              </a>
+            </div>
+          </div>
+
+          {/* Kanan */}
+          <div className="flex items-center space-x-4">
+            <button className="p-2 rounded-full bg-gray-100 hover:bg-gray-200">
+              <img src="/microsoft-edge.svg" alt="Search" className="h-5 w-5" />
+            </button>
+            <button className="px-5 py-2 rounded-full text-white bg-gradient-to-r from-blue-500 to-purple-600 hover:opacity-90 text-sm font-semibold">
+              Log in
+            </button>
           </div>
         </div>
-
-  {/* Kanan - Aksi */}
-  <div className="flex items-center space-x-4">
-    <button className="p-2 rounded-full bg-gray-100 hover:bg-gray-200">
-      <img src="/microsoft-edge.svg" alt="Search" className="h-5 w-5" />
-    </button>
-    <button className="px-5 py-2 rounded-full text-white bg-gradient-to-r from-blue-500 to-purple-600 hover:opacity-90 text-sm font-semibold">
-      Log in
-    </button>
-  </div>
-</nav>
+      </nav>
 
      <section className="relative text-center py-28 bg-gradient-to-r from-indigo-50 via-purple-50 to-pink-50 overflow-hidden">
   {/* Heading */}
