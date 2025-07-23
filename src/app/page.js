@@ -414,7 +414,7 @@ export default function Home() {
   hover:bg-right hover:shadow-xl 
   transition-all duration-500 ease-in-out transform hover:scale-105 hover:-translate-y-1">
   Get Started for Free 
-  <span className="ml-2 text-xl">&rarr;</span>
+  
 </button>
 
 
@@ -499,7 +499,7 @@ export default function Home() {
 
     {/* Help */}
     <div>
-      <h3 className="font-bold mb-2">Help & FAQs</h3>
+      <h3 className="font-bold mb-2">Help and FAQs</h3>
       <ul className="text-sm space-y-1 text-gray-300">
         <li>FAQ</li>
         <li>Resources</li>
