@@ -1,29 +1,27 @@
 "use client";
-import { useState, useEffect } from 'react';
+
+import { useState, useEffect } from "react";
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
-  const [hasMounted, setHasMounted] = useState(false);
 
   useEffect(() => {
-    setHasMounted(true); // Flag untuk pastikan sudah client
     const handleScroll = () => {
-      setScrolled(window.scrollY > 0);
+      setScrolled(window.scrollY > 10); // kasih sedikit jarak scroll biar nggak terlalu sensitif
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
-  if (!hasMounted) {
-    // Hindari render di server yang bisa beda dari client
-    return null;
-  }
+    // Jalankan sekali saat render
+    handleScroll();
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <div className="bg-white">
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 h-20 transition-colors duration-300 ${
-          scrolled ? 'bg-white shadow-md' : 'bg-transparent'
+        className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 h-20 transition-all duration-300 ${
+          scrolled ? "bg-white shadow-md" : "bg-transparent"
         }`}
       >
         {/* Logo dan Menu */}
@@ -273,13 +271,15 @@ export default function Home() {
   </div>
 
   {/* Right - Image */}
-<div className="w-full max-w-2xl lg:w-[45%] h-auto bg-white-100 rounded-2xl shadow-lg shine-effect">
-  <img 
-    src="main2.png" 
-    className="w-full h-auto rounded-2xl" 
+<div className="relative overflow-hidden rounded-2xl shadow-lg w-full max-w-2xl lg:w-[45%]">
+  <img
+    src="main2.png"
+    className="w-full h-auto"
     alt="Main"
   />
+  <div className="shimmer-effect absolute top-0 left-0 w-full h-full pointer-events-none" />
 </div>
+
 
 
 </div>
